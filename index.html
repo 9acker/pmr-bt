@@ -146,7 +146,7 @@ details summary { cursor: pointer; color: var(--muted); font-size: 13px; padding
         <input type="text" id="name" maxlength="24">
         <button class="sec" id="btnName">Speichern</button>
       </div>
-      <p class="small muted">Der neue Name gilt sofort für das Handy; in der BLE-Liste erst nach einem Neustart.</p>
+      <p class="small muted">Gilt nach einem Neustart. Ein schon gekoppeltes Handy zeigt weiter den alten Namen, bis du es dort entkoppelst und neu koppelst (oder dort umbenennst).</p>
       <div class="row">
         <button class="sec" id="btnDefaults">Standardwerte</button>
         <button class="danger" id="btnReboot">Neustart</button>
@@ -189,6 +189,8 @@ const SETTINGS = {
   5:  { g: "grpRadio", label: "Automatische Lautstärke (AGC)", type: "bool" },
   6:  { g: "grpRadio", label: "Funk nur bei Aktivität durchlassen", type: "bool", hint: "Unterdrückt Rauschen zwischen den Durchgängen." },
   7:  { g: "grpMix",   label: "Musik absenken um", unit: "dB", hint: "Während Funk aktiv ist." },
+  13: { g: "grpMix",   label: "Funk an Musiklautstärke anpassen", type: "bool", hint: "Die Firmware misst den Pegel der Musik und bringt den Funk auf denselben Pegel." },
+  14: { g: "grpMix",   label: "Funk lauter als Musik um", unit: "dB", hint: "Zuschlag beim Anpassen, negativ = leiser." },
   8:  { g: "grpMix",   label: "Funk-Puffer", unit: "ms", hint: "Kleiner = weniger Verzögerung, aber eher Aussetzer." },
   9:  { g: "grpLink",  label: "Stream offen halten nach Funk", unit: "s", hint: "Danach schläft die Verbindung zum Kopfhörer, der erste Funk-Ton kann dann verloren gehen." },
   10: { g: "grpLink",  label: "Stream immer offen halten", type: "bool", hint: "Sicherster Empfang, kostet etwas Strom." },
