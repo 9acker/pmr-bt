@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#16181d">
-<title>XT70 BT</title>
+<title>pmr-bt</title>
 <style>
 :root {
   --bg: #f4f5f7; --card: #fff; --fg: #1b1d22; --muted: #6a6f7a; --line: #e2e4e9;
@@ -73,12 +73,12 @@ details summary { cursor: pointer; color: var(--muted); font-size: 13px; padding
 <body>
 <main>
   <header>
-    <h1>XT70 BT</h1>
+    <h1>pmr-bt</h1>
     <span class="pill"><span class="dot" id="connDot"></span><span id="connText">nicht verbunden</span></span>
   </header>
 
   <div class="banner" id="noBle" hidden>
-    Dieser Browser kann kein Web Bluetooth. Unter Android Vanadium oder Chrome verwenden
+    Dieser Browser kann kein Web Bluetooth. Einen Chromium-Browser verwenden (unter Android z.&nbsp;B. Chrome, Edge oder Vanadium)
     (Seite muss über https geladen sein).
   </div>
 
@@ -120,7 +120,7 @@ details summary { cursor: pointer; color: var(--muted); font-size: 13px; padding
         <button class="danger" id="btnForgetYes">Ja, vergessen</button>
         <button class="sec" id="btnForgetNo">Abbrechen</button>
       </div>
-      <p class="small muted" id="scanHint" hidden>Kopfhörer in den Kopplungsmodus bringen (Buds Live: in die Schale, Deckel auf, beide Touchflächen lange halten).</p>
+      <p class="small muted" id="scanHint" hidden>Kopfhörer in den Kopplungsmodus bringen (siehe dessen Anleitung). Ist er gerade mit einem anderen Gerät verbunden, taucht er oft nicht auf.</p>
       <div id="devices"></div>
     </section>
 
@@ -143,10 +143,11 @@ details summary { cursor: pointer; color: var(--muted); font-size: 13px; padding
       <h2>Gerät</h2>
       <label class="small muted" for="name">Bluetooth-Name</label>
       <div class="row" style="margin-top:6px; flex-wrap:nowrap">
-        <input type="text" id="name" maxlength="24">
+        <input type="text" id="name" maxlength="24" placeholder="Standardname">
         <button class="sec" id="btnName">Speichern</button>
       </div>
-      <p class="small muted">Gilt nach einem Neustart. Ein schon gekoppeltes Handy zeigt weiter den alten Namen, bis du es dort entkoppelst und neu koppelst (oder dort umbenennst).</p>
+      <p class="small muted">Leer lassen für den Standardnamen: „pmr-bt“ mit einem Tiernamen, der fest zu diesem Gerät gehört. So lassen sich mehrere Geräte in der Nähe unterscheiden.
+        Gilt nach einem Neustart. Ein schon gekoppeltes Handy zeigt weiter den alten Namen, bis du es dort entkoppelst und neu koppelst (oder dort umbenennst).</p>
       <div class="row">
         <button class="sec" id="btnDefaults">Standardwerte</button>
         <button class="danger" id="btnReboot">Neustart</button>
@@ -185,7 +186,7 @@ const SETTINGS = {
   1:  { g: "grpRadio", label: "Eingangsverstärkung", unit: "dB", hint: "Verstärkung des Funk-Eingangs (Codec-ADC)." },
   2:  { g: "grpRadio", label: "VOX-Schwelle", unit: "", hint: "Ab diesem Pegel zählt ein 5-ms-Fenster als Sprache. Nur ohne Busy-Leitung wichtig." },
   3:  { g: "grpRadio", label: "VOX-Anteil", unit: "%", hint: "So viele Fenster der letzten 300 ms müssen über der Schwelle liegen." },
-  4:  { g: "grpRadio", label: "Busy-Leitung", type: "select", options: ["Aus", "An", "Automatisch"], hint: "Funk-Erkennung über das Busy-Signal des XT70 (ohne Verzögerung)." },
+  4:  { g: "grpRadio", label: "Busy-Leitung", type: "select", options: ["Aus", "An", "Automatisch"], hint: "Funk-Erkennung über ein Busy-/Squelch-Signal des Funkgeräts, falls angeschlossen (ohne Verzögerung). Automatisch: nutzt es, sobald es einmal aktiv war." },
   5:  { g: "grpRadio", label: "Automatische Lautstärke (AGC)", type: "bool" },
   6:  { g: "grpRadio", label: "Funk nur bei Aktivität durchlassen", type: "bool", hint: "Unterdrückt Rauschen zwischen den Durchgängen." },
   7:  { g: "grpMix",   label: "Musik absenken um", unit: "dB", hint: "Während Funk aktiv ist." },
